@@ -30,5 +30,6 @@ dependencies {
     compile('com.h2database:h2')        //h2는 인메모리 관계형 데이터베이스임. 메모리에서 실행됭어 애플리케이션 재시작할때마다 초기회되기때문에 테스트용도로 많이 사용함
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile('org.projectlombok:lombok')
+    compile('org.springframework.boot:spring-boot-starter-mustache')
 
 }
