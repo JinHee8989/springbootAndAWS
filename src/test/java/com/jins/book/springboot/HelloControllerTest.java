@@ -13,8 +13,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class) //테스트를 진행할 때 JUnit에 내장된 실행자 외에 다른 실행자를 실행시킴(여기서는 SpringRunner라는 스프링 실행자)
-                             //즉, 스프링부트테스트와 JUnit사이에 연결자
-// 역할을 함
+                             //즉, 스프링부트테스트와 JUnit사이에 연결자 역할을 함
 @WebMvcTest(controllers = HelloController.class) //스프링 어노테이션 중에서 web에 집중할 수 잇는 어노테이션으로
                                                  //선언할 경우 @Controller, @ControllerAdvice등을 사용할 수 있음
                                                  //(단, @Service, @Component, @Repository는 사용불가)
