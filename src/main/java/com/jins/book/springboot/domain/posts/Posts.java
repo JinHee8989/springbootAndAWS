@@ -1,5 +1,6 @@
 package com.jins.book.springboot.domain.posts;
 
+import com.jins.book.springboot.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Getter //엔티티 클래스에는 절대 Setter를 만들지 않는다(해당 클래스의 인스턴스값들이 언제 어디서 변해야하는지 코드상으로 명확하게 구분할수 없어서, 변경이 필요할 경우 목적과 의도를 나타낼수 있는 메소드추가)
 @NoArgsConstructor
 @Entity //테이블과 링크될 클래스를 나타냄(클래스의 카멜케이스 이름을 언더스코어 네이밍으로 테이블 이름을 매칭 (ex:SalesManeger.java --> sales_manager table)
-public class Posts {
+public class Posts extends BaseTimeEntity {
 
     @Id //해당 테이블의 PK필드를 나타냄
     @GeneratedValue(strategy = GenerationType.IDENTITY) //PK의 생성규칙을 나타냄. GenerationType.IDENTITY옵션을 추가해야 auto_increment가 됨
