@@ -10,16 +10,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
 
     private final PostsService postsService;
+    private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model, @LoginUser SessionUser user){      //@LoginUser를 생성함으로 인해 이 어노테이션을 사용하면 어디서든지 세션정보를 가져올 수 있다.
+    public String index(Model model, @LoginUser SessionUser user){      //@LoginUser 어노테이션쓰면  어디서든 세션값 가져올 수 있음
         model.addAttribute("posts",postsService.findAllDesc());
+//        SessionUser user = (SessionUser)httpSession.getAttribute("user");
 
         if(user!=null){
             model.addAttribute("userName",user.getName());
