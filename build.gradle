@@ -31,5 +31,7 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile('org.projectlombok:lombok')
     compile('org.springframework.boot:spring-boot-starter-mustache')
+    compile('org.springframework.boot:spring-boot-starter-oauth2-client')   //소셜로그인 등 클라이언트 입장에서 소셜기능 구현 시 필요한 의존성,
+                                                                            //spring-security-outh2-client와 spring-security-outh2-jose를 기본을 관리해줌
 
 }
