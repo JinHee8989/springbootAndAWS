@@ -1,5 +1,6 @@
 package com.jins.book.springboot.web;
 
+import com.jins.book.springboot.domain.user.User;
 import com.jins.book.springboot.web.dto.HelloResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,4 +20,14 @@ public class HelloController {
 
         return new HelloResponseDto(name,amount);
     }
+
+    public String getUserRole(User user) {
+        if(user != null) {
+            String role = String.valueOf(user.getRole());
+            return role;
+        }
+        return "guest";
+    }
+
+
 }
