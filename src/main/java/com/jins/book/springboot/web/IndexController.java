@@ -22,7 +22,7 @@ public class IndexController {
     @GetMapping("/")
     public String index(Model model, @LoginUser SessionUser user){      //@LoginUser 어노테이션쓰면  어디서든 세션값 가져올 수 있음
         model.addAttribute("posts",postsService.findAllDesc());
-//        SessionUser user = (SessionUser)httpSession.getAttribute("user");
+//        SessionUser user = (SessionUser)httpSession.getAttribute("user");  //@LoginUser 어노테이션으로 불필요해져서 주석처리함
 
         if(user!=null){
             model.addAttribute("userName",user.getName());
