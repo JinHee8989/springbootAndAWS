@@ -35,6 +35,6 @@ dependencies {
                                                                             //spring-security-outh2-client와 spring-security-outh2-jose를 기본을 관리해줌
     compile('org.springframework.session:spring-session-jdbc')
     testCompile('org.springframework.security:spring-security-test')
-    compile('org.mariadb.jdbc:mariab-java-client')
+    compile("org.mariadb.jdbc:mariadb-java-client")
 
 }
