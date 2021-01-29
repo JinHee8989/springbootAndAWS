@@ -5,8 +5,10 @@ jdk:
 branches:                 #Travis CI를 어느 브랜치가 푸시될 때 수행할 지 지정함 (여기선 master 브랜치가 푸쉬될때만 수행)
   only:
     - master
+    -
 before_install:
   - chmod +x gradlew
+  -
 
 # Travis CI 서버의 Home
 cache:                    #그레이들을 통해 의존성을 받게되면 해당 디렉토리에 캐시하고 같은 의존성은 다음 배포때부터 다시 받지 않도록 함
@@ -15,6 +17,22 @@ cache:                    #그레이들을 통해 의존성을 받게되면 해�
     - '$HOME/.gradle'
 
 script: "./gradlew clean build"
+
+before_deploy:
+  - zip -r springboot-and-aws *
+  - mkdir -p deploy
+  - mv springboot-and-aws.zip deploy/springboot-and-aws.zip
+
+deploy:
+  - provider: s3
+  - access_key_id: $AWS_ACCESS_KEY                          #Travis repo settings에 설정된 값
+    scret_access_key: $AWS_SECRET_KEY                       #Travis repo settings에 설저된 값
+    bucket: springboot-and-aws-build                        #s3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private                                            #zip파일 접근을 private으로
+    local-dir: deploy                                       #before-deploy에서 생성한 디렉토리
+    wait-until-deployed: true
 
 # CI 실행 완료 시 메일로 알람
 notifications:            # Travis CI 실행 완료 시 자동으로 알람이 가도록 설정하기
