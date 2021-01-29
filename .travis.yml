@@ -14,7 +14,7 @@ cache:                    #그레이들을 통해 의존성을 받게되면 해�
   script: "./gradlew clean build"
 
 # CI 실행 완료 시 메일로 알람
-notifications:            # Travis CI 실행 완료 시 자동으로 알람이 가도록 설정
+notifications:            # Travis CI 실행 완료 시 자동으로 알람이 가도록 설정하기
   emil:
     recipients:
       - wlsgml8989@gmail.com
