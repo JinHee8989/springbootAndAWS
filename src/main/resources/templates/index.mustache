@@ -13,7 +13,7 @@
             <div class="col-md-6">
                 <a href="/posts/save" role="button" class="btn btn-primary">글 등록</a>
                 {{#userName}}       <!--머스테치는 IF문 제공하지 않음, TRUE랑 FALSE만 있다-->
-                    Loged in as: <span id="user"></span>
+                    Loged in as: <span id="user">{{userName}}</span>
                     <a href="/logout" class="btn btn-info active" role="button">Logout</a>
                 {{/userName}}
 
