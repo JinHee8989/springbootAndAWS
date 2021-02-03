@@ -48,7 +48,7 @@ deploy:
     wait-until-deployed: true
 
 # CI 실행 완료 시 메일로 알람
-notifications:            # Travis CI 실행 완료 시 자동으로 알람이 가도록 설정하기
+notifications:            # Travis CI 실행 완료 시 자동으로 알람이 가도록 설정하기!
   email:
     recipients:
       - wlsgml8989@gmail.com
