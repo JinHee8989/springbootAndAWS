@@ -38,7 +38,7 @@ deploy:
 
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY                          #Travis repo settings에 설정된 값
-    scret_access_key: $AWS_SECRET_KEY                       #Travis repo settings에 설저된 값
+    secret_access_key: $AWS_SECRET_KEY                       #Travis repo settings에 설저된 값
     bucket: springboot-and-aws-build                        #s3 버킷
     key: springboot-and-aws.zip                               #빌드파일을 압축해서 전달
     bundle_type: zip                                        #압축확장자
