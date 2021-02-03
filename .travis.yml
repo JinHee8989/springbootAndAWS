@@ -17,7 +17,7 @@ cache:                    #그레이들을 통해 의존성을 받게되면 해�
 script: "./gradlew clean build"
 
 before_deploy:
-  - zip -r springboot-and-aws
+  - zip -r springbootAndAWS
   - mkdir -p before-deploy                  # zip에 포함시킬 파일들을 담을 디렉토리 생성 (travis ci는 특정 파일이 아닌 디렉토리만 s3에 업로드 가능하기 때문)
   - cp scripts/*.sh before-deploy/
   - cp appspec.yml before-deploy/
