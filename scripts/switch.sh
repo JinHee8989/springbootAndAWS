@@ -17,5 +17,5 @@ function switch_proxy(){
                                                                                                             # echo로 넘겨준 문장을 service-url.inc에 덮어씀
   echo ">엔진엑스의 Reload"
   sudo service nginx reload         # 엔진엑스 설정을 다시 불러옴. restart와는 다름(restart는 잠시 끊기는 현상이 있지만 reload는 끊김없이 다시 불러옴. 다만 중요한 설정들은 반영되지 않아 restart를 사용해야함
-                                    # 여기선 외부의 설정파일은 service-url.inc를 다시 불러오는거라 reload사용
+                                    # 여기선 외부의 설정파일은 service-url.inc를 다시 불러오는거라 reload사용!
 }
