@@ -1,40 +1,26 @@
-# appspec.yml
-
-version: 0.0
+version: 0.0          # CodeDeploy버전임
 os: linux
 files:
-  # CodeDeploy에서 전달해 준 파일 중 destination으로 이동시킬 대상을 지정, (/) 루트경로를 지정하면 전체 파일
-  - source: /
-    # source에서 지정된 파일을 받을 위치, 이후 jar를 실행하는 등은 destination에서 옮긴 파일들로 진행됨
-    destination: /home/ec2-user/app/step3/zip/
-    # 기존에 파일들이 있으면 덮어쓸지 지정
-    overwrite: yes
+  - source:  /                # CodeDeploy에서ㅓ 전달해준 파일 중 destination으로 이동시킬 대상을 지정. '/'면 전체 파일을 이동시킬거라는 뜻
+    destination: /home/ec2-user/app/step3/zip/   #source에서 지정된 파일을 받을 위치임. jar 실행할땐 destination에서 옮긴 파일들로 진행됨
+    overwrite: yes            # 기존파일이 있으면 덮어쓸지를 결정. 여기선 파일 덮어쓰기로 함
 
-# CodeDeploy 에서 EC2 서버로 넘겨준 파일들을 모두 ec2-user 권한을 갖도록 함.
-permisstions:
+permissions:                   # codeDeploy에서 EC2서버로 넘겨준 파일들을 모두 ec2-user권한을 갖도록 함
   - object: /
     pattern: "**"
     owner: ec2-user
     group: ec2-user
 
-# CodeDeploy 배포 단계에서 실행할 명령어를 지정
-# ApplicationStart 단계에서 deploy.sh를 ec2-user 권한으로 실행하게 함.
-# timeout 60로 스크립트 실행 60초 이상 수행시 실패
-hooks:
-  # nginx와 연결되어 있지 않은 스프링 부트를 종료..
+hooks:                        # CodeDeploy배포단계에서 실행할 명령어 지정
   AfterInstall:
-    - location: stop.sh
+    - location: stop.sh       #엔진엑스와 연결되어 있지 않은 스프링부트를 종료함
       timeout: 60
       runas: ec2-user
-
-  # nginx와 연결되어 있지 않는 port로 새버전의 스프링 부트를 시작
   ApplicationStart:
-    - location: start.sh
-      timeout: 60
-      runas: ec2-user
-
-  # 새 스프링 부트가 정상적으로 실행됐는지 확인
+    - location: start.sh      # 엔진엑스와 연결되어있지 않은 Port로 새버전의 스프링부트를 시작함
+      timeout: 60             # 60초 이상 수행되면 실패가 뜨도록 설정(시간설정을 안하면 스크립트 실행 후 무한정 기다리게 됨
+      runas: ec2-user         # ec2-user 권한으로 실행
   ValidateService:
-    - location: health.sh
+    - location: health.sh     #새 스프링부트가 정상적으로 실행됐는지 확인해줌
       timeout: 60
       runas: ec2-user
