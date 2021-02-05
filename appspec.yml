@@ -21,7 +21,7 @@ permisstions:
 # ApplicationStart 단계에서 deploy.sh를 ec2-user 권한으로 실행하게 함.
 # timeout 60로 스크립트 실행 60초 이상 수행시 실패
 hooks:
-  # nginx와 연결되어 있지 않은 스프링 부트를 종료.
+  # nginx와 연결되어 있지 않은 스프링 부트를 종료..
   AfterInstall:
     - location: stop.sh
       timeout: 60
