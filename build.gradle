@@ -17,7 +17,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'//스프링부트의 의존성들을 관리해주는 플러그인임
 
 group 'com.jins.book'
-version '1.0.1-SNAPSHOT'
+version '1.0.1-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")       //build.gradle은 groovy 기반 빌드툴로 groovy언어의 문법 사용가능. 빌드할때마다 시간이 버전에 추가되도록 수정함
 sourceCompatibility = 1.8
 
 repositories {
