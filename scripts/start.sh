@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+#배포할 신규버전 스프링부트 프로젝트를 stop.sh로 종료한 'profile'로 실행
 ABSPATH=$(readlink -f $0)
 ABSDIR=$(dirname $ABSPATH)        #현재 stop.sh가 속해있는 경로를 찾음
 source ${ABSDIR}/profile.sh       #자바로 치면 일종의 import문. 해당 코드로 인해 profile의 function을 사용할 수 있게 됨
